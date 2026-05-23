@@ -1,0 +1,788 @@
+:root {
+  --ink: #123034;
+  --muted: #5c6c6f;
+  --paper: #f7f3ea;
+  --paper-strong: #fffaf0;
+  --teal: #047c86;
+  --teal-dark: #03535b;
+  --gold: #cf8a2f;
+  --coral: #d85846;
+  --white: #ffffff;
+  --line: rgba(18, 48, 52, 0.14);
+  --shadow: 0 24px 70px rgba(18, 48, 52, 0.2);
+  font-family: "Noto Sans SC", "Microsoft YaHei", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.site-header {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 18px clamp(18px, 4vw, 64px);
+  color: var(--white);
+  transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+}
+
+.site-header.scrolled {
+  color: var(--ink);
+  background: rgba(255, 250, 240, 0.94);
+  box-shadow: 0 12px 36px rgba(18, 48, 52, 0.12);
+  backdrop-filter: blur(16px);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: max-content;
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.brand-mark {
+  display: inline-grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(14px, 3vw, 34px);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.nav-links a,
+.header-action {
+  opacity: 0.92;
+}
+
+.nav-links a:hover,
+.header-action:hover {
+  opacity: 1;
+}
+
+.header-action {
+  min-width: max-content;
+  padding: 10px 18px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.hero {
+  position: relative;
+  min-height: 92vh;
+  overflow: hidden;
+  display: grid;
+  align-items: end;
+  padding: 120px clamp(18px, 5vw, 78px) 42px;
+  color: var(--white);
+}
+
+.hero-image,
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-image {
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero-shade {
+  background:
+    linear-gradient(90deg, rgba(8, 30, 34, 0.74) 0%, rgba(8, 30, 34, 0.44) 38%, rgba(8, 30, 34, 0.12) 72%),
+    linear-gradient(180deg, rgba(8, 30, 34, 0.25) 0%, rgba(8, 30, 34, 0.02) 42%, rgba(8, 30, 34, 0.7) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: min(760px, 100%);
+  padding-bottom: clamp(92px, 16vh, 152px);
+}
+
+.eyebrow {
+  margin: 0 0 14px;
+  color: #f1c47b;
+  font-size: 13px;
+  font-weight: 850;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.eyebrow.dark {
+  color: var(--gold);
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  margin-bottom: 22px;
+  max-width: 700px;
+  font-size: clamp(42px, 7vw, 82px);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+h2 {
+  margin-bottom: 16px;
+  font-size: clamp(30px, 4vw, 52px);
+  line-height: 1.15;
+  letter-spacing: 0;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-size: 21px;
+  line-height: 1.25;
+}
+
+.hero-copy {
+  max-width: 650px;
+  margin-bottom: 30px;
+  font-size: clamp(17px, 2.1vw, 22px);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.primary-button,
+.ghost-button,
+.lead-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 50px;
+  padding: 0 24px;
+  border-radius: 999px;
+  font-weight: 850;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+}
+
+.primary-button,
+.lead-form button {
+  border: 0;
+  color: var(--white);
+  background: var(--coral);
+  box-shadow: 0 16px 32px rgba(216, 88, 70, 0.28);
+}
+
+.ghost-button {
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.primary-button:hover,
+.ghost-button:hover,
+.lead-form button:hover {
+  transform: translateY(-2px);
+}
+
+.hero-panel {
+  position: absolute;
+  z-index: 3;
+  right: clamp(18px, 5vw, 78px);
+  bottom: 34px;
+  left: clamp(18px, 5vw, 78px);
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  width: min(680px, calc(100% - 36px));
+  margin-left: auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.hero-panel div {
+  min-height: 92px;
+  padding: 18px;
+  background: rgba(4, 83, 91, 0.3);
+}
+
+.panel-number,
+.panel-label {
+  display: block;
+}
+
+.panel-number {
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 900;
+  line-height: 1;
+}
+
+.panel-label {
+  margin-top: 8px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 14px;
+}
+
+.section-wrap {
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto;
+}
+
+.intro,
+.route,
+.season {
+  padding: clamp(70px, 9vw, 116px) 0;
+}
+
+.section-heading {
+  max-width: 760px;
+  margin-bottom: 34px;
+}
+
+.section-heading.split {
+  max-width: none;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(280px, 0.7fr);
+  gap: 36px;
+  align-items: end;
+}
+
+.section-heading.split p:last-child {
+  margin-bottom: 22px;
+  color: var(--muted);
+  font-size: 17px;
+}
+
+.intro-grid,
+.season-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.intro-grid article,
+.route-card,
+.season-grid article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--paper-strong);
+}
+
+.intro-grid article {
+  min-height: 250px;
+  padding: 30px;
+}
+
+.intro-card {
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+  background-image:
+    linear-gradient(180deg, rgba(8, 30, 34, 0.2), rgba(8, 30, 34, 0.86)),
+    linear-gradient(90deg, rgba(8, 30, 34, 0.72), rgba(8, 30, 34, 0.18)),
+    var(--intro-image);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 18px 46px rgba(18, 48, 52, 0.16);
+}
+
+.intro-card::before {
+  display: none;
+}
+
+.intro-mountain {
+  --intro-image: url("assets/new-zealand-hero.png");
+  background-position: 65% center;
+}
+
+.intro-coast {
+  --intro-image: url("assets/milford-fjord.png");
+  background-position: 58% center;
+}
+
+.intro-glow {
+  --intro-image: url("assets/north-island-geothermal.png");
+  background-position: 62% center;
+}
+
+.intro-grid p,
+.route-card p,
+.season-grid p,
+.experience-copy p,
+.experience-list p,
+.contact-inner p {
+  color: var(--muted);
+}
+
+.intro-card p {
+  color: rgba(255, 255, 255, 0.84);
+}
+
+.feature-icon {
+  position: relative;
+  display: block;
+  width: 54px;
+  height: 54px;
+  margin-bottom: 28px;
+}
+
+.feature-icon::before,
+.feature-icon::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.feature-icon.mountain::before {
+  clip-path: polygon(50% 8%, 100% 92%, 0 92%);
+  background: var(--teal);
+}
+
+.feature-icon.mountain::after {
+  clip-path: polygon(50% 8%, 67% 36%, 54% 31%, 45% 42%, 34% 35%);
+  background: var(--white);
+}
+
+.feature-icon.coast::before {
+  border: 3px solid var(--teal);
+  border-radius: 50%;
+}
+
+.feature-icon.coast::after {
+  top: 27px;
+  height: 17px;
+  border-top: 4px solid var(--gold);
+  border-bottom: 4px solid var(--gold);
+  border-radius: 50%;
+}
+
+.feature-icon.glow::before {
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold) 0 16%, transparent 18% 30%, var(--teal) 32% 42%, transparent 44%);
+}
+
+.feature-icon.glow::after {
+  inset: 8px;
+  border: 2px solid rgba(4, 124, 134, 0.32);
+  border-radius: 50%;
+}
+
+.route {
+  border-top: 1px solid var(--line);
+}
+
+.route-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.route-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 280px;
+  padding: 26px;
+  color: var(--white);
+  background-image:
+    linear-gradient(180deg, rgba(8, 30, 34, 0.1), rgba(8, 30, 34, 0.88)),
+    linear-gradient(90deg, rgba(8, 30, 34, 0.82), rgba(8, 30, 34, 0.16)),
+    var(--route-image);
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 18px 44px rgba(18, 48, 52, 0.14);
+}
+
+.route-card::before {
+  display: none;
+}
+
+.route-north {
+  --route-image: url("assets/north-island-geothermal.png");
+}
+
+.route-alpine {
+  --route-image: url("assets/tekapo-stars.png");
+  background-position: 52% center;
+}
+
+.route-lake {
+  --route-image: url("assets/new-zealand-hero.png");
+  background-position: 70% center;
+}
+
+.route-fjord {
+  --route-image: url("assets/milford-fjord.png");
+  background-position: 58% center;
+}
+
+.route-card span {
+  display: inline-block;
+  margin-bottom: 54px;
+  color: #f1c47b;
+  font-weight: 900;
+}
+
+.route-card p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.experiences {
+  position: relative;
+  isolation: isolate;
+  color: var(--white);
+  background:
+    linear-gradient(90deg, rgba(3, 49, 54, 0.98) 0%, rgba(3, 83, 91, 0.84) 42%, rgba(8, 30, 34, 0.55) 100%),
+    linear-gradient(180deg, rgba(8, 30, 34, 0.86), rgba(8, 30, 34, 0.68)),
+    url("assets/milford-fjord.png") center / cover fixed;
+}
+
+.experience-layout {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.72fr) minmax(0, 1fr);
+  gap: clamp(34px, 6vw, 74px);
+  padding: clamp(76px, 9vw, 120px) 0;
+}
+
+.experience-copy {
+  position: sticky;
+  top: 104px;
+  align-self: start;
+}
+
+.experience-copy p,
+.experience-list p {
+  color: rgba(255, 255, 255, 0.76);
+}
+
+.experience-list {
+  display: grid;
+  gap: 14px;
+}
+
+.experience-list article {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 20px;
+  min-height: 180px;
+  padding: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 8px;
+  background-image:
+    linear-gradient(90deg, rgba(8, 30, 34, 0.86), rgba(8, 30, 34, 0.52) 50%, rgba(8, 30, 34, 0.16)),
+    linear-gradient(180deg, rgba(8, 30, 34, 0.2), rgba(8, 30, 34, 0.78)),
+    var(--experience-image);
+  background-size: cover;
+  background-position: center;
+}
+
+.experience-list article::before {
+  display: none;
+}
+
+.experience-list span {
+  color: #f1c47b;
+  font-weight: 900;
+}
+
+.experience-list h3,
+.experience-list p {
+  grid-column: 2;
+}
+
+.experience-list p {
+  max-width: 520px;
+}
+
+.exp-fjord {
+  --experience-image: url("assets/milford-fjord.png");
+}
+
+.exp-stars {
+  --experience-image: url("assets/tekapo-stars.png");
+}
+
+.exp-lake {
+  --experience-image: url("assets/new-zealand-hero.png");
+  background-position: 70% center;
+}
+
+.exp-geothermal {
+  --experience-image: url("assets/north-island-geothermal.png");
+}
+
+.season-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.season-grid article {
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+  padding: 24px;
+  color: var(--white);
+  background-image:
+    linear-gradient(180deg, rgba(8, 30, 34, 0.12), rgba(8, 30, 34, 0.82)),
+    linear-gradient(90deg, rgba(8, 30, 34, 0.78), rgba(8, 30, 34, 0.2)),
+    var(--season-image);
+  background-size: cover;
+  background-position: center;
+}
+
+.season-grid article::before {
+  display: none;
+}
+
+.season-grid p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.season-spring {
+  --season-image: url("assets/tekapo-stars.png");
+}
+
+.season-summer {
+  --season-image: url("assets/new-zealand-hero.png");
+  background-position: 65% center;
+}
+
+.season-autumn {
+  --season-image: url("assets/north-island-geothermal.png");
+}
+
+.season-winter {
+  --season-image: url("assets/milford-fjord.png");
+}
+
+.contact {
+  padding: clamp(64px, 8vw, 104px) clamp(18px, 4vw, 64px);
+  background:
+    linear-gradient(90deg, rgba(8, 30, 34, 0.94), rgba(3, 83, 91, 0.76) 56%, rgba(8, 30, 34, 0.5)),
+    linear-gradient(180deg, rgba(8, 30, 34, 0.72), rgba(8, 30, 34, 0.9)),
+    url("assets/tekapo-stars.png") center / cover;
+}
+
+.contact-inner {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(300px, 520px);
+  gap: clamp(32px, 7vw, 90px);
+  align-items: center;
+  width: min(1120px, 100%);
+  margin: 0 auto;
+  color: var(--white);
+}
+
+.contact-inner h2 {
+  margin-bottom: 14px;
+}
+
+.contact-inner p {
+  max-width: 560px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 18px;
+}
+
+.lead-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  padding: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+}
+
+.lead-form label {
+  display: grid;
+  gap: 8px;
+}
+
+.lead-form span {
+  color: rgba(255, 255, 255, 0.84);
+  font-size: 14px;
+  font-weight: 750;
+}
+
+.lead-form input,
+.lead-form select {
+  width: 100%;
+  min-height: 48px;
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  border-radius: 8px;
+  padding: 0 14px;
+  color: var(--white);
+  background: rgba(255, 255, 255, 0.12);
+  font: inherit;
+}
+
+.lead-form input::placeholder {
+  color: rgba(255, 255, 255, 0.54);
+}
+
+.lead-form select option {
+  color: var(--ink);
+}
+
+.lead-form button,
+.form-note {
+  grid-column: 1 / -1;
+}
+
+.lead-form button {
+  width: 100%;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.form-note {
+  min-height: 24px;
+  margin: 0;
+  color: #f1c47b;
+}
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 24px clamp(18px, 4vw, 64px);
+  color: rgba(255, 255, 255, 0.72);
+  background: #0b2628;
+  font-size: 14px;
+}
+
+@media (max-width: 980px) {
+  .nav-links {
+    display: none;
+  }
+
+  .section-heading.split,
+  .experience-layout,
+  .contact-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-grid,
+  .route-grid,
+  .season-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .experience-copy {
+    position: static;
+  }
+}
+
+@media (max-width: 680px) {
+  .site-header {
+    padding: 12px 16px;
+  }
+
+  .brand span:last-child {
+    display: none;
+  }
+
+  .header-action {
+    padding: 9px 14px;
+  }
+
+  .hero {
+    min-height: 820px;
+    padding: 96px 18px 22px;
+  }
+
+  .hero-image {
+    object-position: 56% center;
+  }
+
+  .hero-content {
+    padding-bottom: 260px;
+  }
+
+  .hero-panel {
+    right: 18px;
+    bottom: 20px;
+    left: 18px;
+    grid-template-columns: 1fr;
+    width: auto;
+  }
+
+  .hero-panel div {
+    min-height: 78px;
+    padding: 14px 18px;
+  }
+
+  .intro-grid,
+  .route-grid,
+  .season-grid,
+  .lead-form {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-grid article,
+  .route-card,
+  .season-grid article {
+    min-height: auto;
+  }
+
+  .route-card span {
+    margin-bottom: 28px;
+  }
+
+  .experience-list article {
+    grid-template-columns: 42px 1fr;
+    gap: 14px;
+  }
+}
